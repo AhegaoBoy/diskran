@@ -13,8 +13,8 @@ class AVL_tree
         tkey _key;
         tvalue _value;
 
-        size_t height;
-        node(tkey key, tvalue value) : _key(key), _value(value), _right(nullptr), _left(nullptr), height(1){};
+        int64_t height;
+        node(tkey key, tvalue value) : _key(key), _value(value), _right(nullptr), _left(nullptr),_parent(nullptr), height(1){};
 
     };
 
@@ -30,9 +30,11 @@ public:
 private:
     class balance_class
     {
-        void balance(AVL_tree::node current_node);
+        void balance(AVL_tree::node*& current_node);
 
-        size_t count_height();
+        void count_height(AVL_tree<tkey, tvalue>::node*&  current_node);
+
+        int64_t balance_factor(AVL_tree<tkey, tvalue>::node const * current_node);
 
         void small_left_rotation(AVL_tree::node*& current_node);
         void small_right_rotation(AVL_tree::node*& current_node);
@@ -82,7 +84,7 @@ private:
 
         obtain_class(AVL_tree<tkey, tvalue>* tree) : _tree(tree){};
 
-        std::pair<obtain_status, tvalue> obtain(tkey key);
+        std::pair<obtain_status, node*&> obtain(tkey key);
     };
 
 private:

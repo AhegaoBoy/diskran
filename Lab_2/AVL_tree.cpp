@@ -1,63 +1,258 @@
 #include "AVL_tree.h"
 
 template<typename tkey, typename tvalue>
-void AVL_tree<tkey, tvalue>::balance_class::balance(AVL_tree<tkey, tvalue>::node current_node)
+void AVL_tree<tkey, tvalue>::balance_class::balance(AVL_tree<tkey, tvalue>::node*& current_node)
 {
+    node* iter = current_node;
+    while(iter->_parent)
+    {
+        int64_t cur_node_bf = balance_factor(current_node);
+        if(std::abs(cur_node_bf) <= 1)
+            iter = iter->_parent;
 
+        else
+        {
+            if(cur_node_bf > 0)
+            {
+                int64_t left_subtree_bf = balance_factor(current_node->_left);
+                if(left_subtree_bf > 0)
+                {
+                    small_left_rotation(current_node);
+                }
+                else
+                {
+                    big_right_rotation(current_node);
+                }
+            }
+            else
+            {
+                int64_t right_subtree_bf = balance_factor(current_node->_right);
+                if(right_subtree_bf > 0)
+                {
+                    small_right_rotation(current_node);
+                }
+                else
+                {
+                    big_right_rotation(current_node);
+                }
+            }
+        }
+
+    }
+}
+
+template<typename tkey, typename tvalue>
+void AVL_tree<tkey, tvalue>::balance_class::count_height(AVL_tree<tkey, tvalue>::node*&  current_node)
+{
+    if(!current_node)
+    {
+        return;
+    }
+    if(!current_node->_left && !current_node->_right)
+    {
+        current_node->height = 1;
+        return;
+    }
+
+    if(!current_node->_left && current_node->_right)
+    {
+        current_node->height = current_node->_right->height + 1;
+        return ;
+    }
+    if(current_node->_left && !current_node->_right)
+    {
+        current_node->height = current_node->_right->height + 1;
+        return ;
+    }
+    current_node->height = std::max(current_node->_right->height, current_node->_left->height) + 1;
+}
+
+template<typename tkey, typename tvalue>
+int64_t AVL_tree<tkey, tvalue>::balance_class::balance_factor(const AVL_tree<tkey, tvalue>::node * current_node)
+{
+    if(!current_node || !current_node->_left && !current_node->_right)
+        return 0;
+    if(!current_node->_left && current_node->_right)
+        return -current_node->_right->height;
+
+    if(current_node->_left && !current_node->_right)
+        return current_node->_left->height;
+
+    return current_node->_left->height - current_node->_right->height;
 }
 
 template<typename tkey,typename tvalue>
 void AVL_tree<tkey, tvalue>::balance_class::small_left_rotation(AVL_tree<tkey, tvalue>::node *&current_node)
 {
+    node* tmp = current_node->_left;
+
+    tmp->_parent = current_node->_parent;
+    tmp->_right = current_node;
+    current_node->_parent = tmp;
+
+    node* parent_node = tmp->_parent;
+    if(parent_node->_left == current_node)
+        parent_node->_left = tmp;
+    else
+        parent_node->_right = tmp;
 
 }
 
-template<typename tkey, typename tvalue>
-size_t AVL_tree<tkey, tvalue>::balance_class::count_height()
-{
-
-}
 
 template<typename tkey, typename tvalue>
 void AVL_tree<tkey, tvalue>::balance_class::small_right_rotation(AVL_tree<tkey, tvalue>::node *&current_node)
 {
+    node* tmp = current_node->_right;
 
+    tmp->_parent = current_node->_parent;
+    tmp->_left = current_node;
+    current_node->_parent = tmp;
+
+    node* parent_node = tmp->_parent;
+    if(parent_node->_left == current_node)
+        parent_node->_left = tmp;
+    else
+        parent_node->_right = tmp;
 }
 
 template<typename tkey, typename tvalue>
 void AVL_tree<tkey, tvalue>::balance_class::big_left_rotation(AVL_tree<tkey, tvalue>::node *&current_node)
 {
+    node* child = current_node->right_subtree;
+    node* grand_child = child->left_subtree;
 
+    node* grand_child_data = grand_child->right_subtree;
+
+    current_node->right_subtree = grand_child;
+    grand_child->right_subtree = child;
+
+    child->left_subtree = grand_child_data;
+
+    small_left_rotation(current_node);
 }
 
 template<typename tkey, typename tvalue>
 void AVL_tree<tkey, tvalue>::balance_class::big_right_rotation(AVL_tree<tkey, tvalue>::node *&current_node)
 {
+    node* child = current_node->left_subtree;
+    node* grand_child = child->right_subtree;
 
+    node* grand_child_data = grand_child->left_subtree;
+
+    current_node->left_subtree = grand_child;
+    grand_child->left_subtree = child;
+
+    child->right_subtree = grand_child_data;
+
+    small_right_rotation(current_node);
 }
 
 template<typename tkey, typename tvalue>
 typename AVL_tree<tkey, tvalue>::insert_class::insert_status AVL_tree<tkey, tvalue>::insert_class::insert(tkey key, tvalue &&value)
 {
 
+    node* iter = _tree->root;
+    std::pair<typename AVL_tree<tkey, tvalue>::obtain_class::obtain_status, typename AVL_tree<tkey, tvalue>::node*&> result;
+    while(iter)
+    {
+        if(key < iter->_key)
+            iter = iter->_left;
+        else if(key > iter->_key)
+            iter = iter->_right;
+        else
+            return std::make_pair(AVL_tree<tkey, tvalue>::obtain_class::obtain_status::OK, iter);
+    }
+
+    return std::make_pair(AVL_tree<tkey, tvalue>::obtain_class::obtain_status::NotFound, iter);
 }
 
 template<typename tkey, typename tvalue>
 typename AVL_tree<tkey, tvalue>::insert_class::insert_status AVL_tree<tkey, tvalue>::insert_class::insert(tkey key, const tvalue &value)
 {
+    node* iter = _tree->root;
+    node* parent = iter;
+
+    AVL_tree<tkey, tvalue>::insert_class::insert_status result;
+    while(iter)
+    {
+        if(key < iter->_key)
+        {
+            parent = iter;
+            iter = iter->_left;
+        }
+        else if(key > iter->_key)
+        {
+            parent = iter;
+            iter = iter->_right;
+        }
+        else
+            return AVL_tree<tkey, tvalue>::insert_class::insert_status::Exist;
+    }
+
+    bool is_left_subtree = parent->_left == iter;
+    node* new_node = new node(key, value);
+
+    is_left_subtree ? parent->_left : parent->_right = new_node;
+    new_node->_parent = parent;
+    balance_class::balance(new_node);
 
 }
 
 template<typename tkey, typename tvalue>
-typename AVL_tree<tkey, tvalue>::dispose_class::dispose_status AVL_tree<tkey, tvalue>::dispose_class::dispose(tkey key_to_dispose)
+typename AVL_tree<tkey, tvalue>::dispose_class::dispose_status AVL_tree<tkey, tvalue>::dispose_class::dispose(tkey key)
 {
+
+    node* iter = _tree->root;
+    std::pair<typename AVL_tree<tkey, tvalue>::obtain_class::obtain_status, typename AVL_tree<tkey, tvalue>::node*&> result;
+    while(iter)
+    {
+        if(key < iter->_key)
+            iter = iter->_left;
+        else if(key > iter->_key)
+            iter = iter->_right;
+        else
+            break;
+    }
+
+    if(!iter)
+        return std::make_pair(AVL_tree<tkey, tvalue>::obtain_class::obtain_status::NotFound, iter);
+
+    if(iter->_left)
+    {
+
+        node* find_the_least = iter->_left;
+
+
+        while(find_the_least->_right)
+        {
+            find_the_least = find_the_least->_right;
+        }
+
+
+
+    }
+
+    balance_class::balance(iter);
 
 }
 
 template<typename tkey, typename tvalue>
-std::pair<typename AVL_tree<tkey, tvalue>::obtain_class::obtain_status, tvalue> AVL_tree<tkey, tvalue>::obtain_class::obtain(tkey key)
+std::pair<typename AVL_tree<tkey, tvalue>::obtain_class::obtain_status,
+typename AVL_tree<tkey, tvalue>::node*&> AVL_tree<tkey, tvalue>::obtain_class::obtain(tkey key)
 {
+    node* iter = _tree->root;
+    std::pair<typename AVL_tree<tkey, tvalue>::obtain_class::obtain_status, typename AVL_tree<tkey, tvalue>::node*&> result;
+    while(iter)
+    {
+        if(key < iter->_key)
+            iter = iter->_left;
+        else if(key > iter->_key)
+            iter = iter->_right;
+        else
+            return std::make_pair(AVL_tree<tkey, tvalue>::obtain_class::obtain_status::OK, iter);
+    }
 
+    return std::make_pair(AVL_tree<tkey, tvalue>::obtain_class::obtain_status::NotFound, iter);
 }
 
 
@@ -78,8 +273,6 @@ std::string AVL_tree<tkey, tvalue>::insert(tkey key, const tvalue &value)
     typename AVL_tree<tkey, tvalue>::insert_class::insert_status status_code = insertClass->insert(key, value);
     return status_code == AVL_tree<tkey, tvalue>::insert_class::insert_status::OK ? "OK" : "Exist";
 }
-
-
 
 template<typename tkey, typename tvalue>
 std::string AVL_tree<tkey, tvalue>::dispose(tkey key)

@@ -1,6 +1,5 @@
 #include <iostream>
-
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+#include "AVL_tree.h"
+int main()
+{
 }
