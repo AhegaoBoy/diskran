@@ -1,4 +1,8 @@
 # ninja log v5
-0	250	7487481521217700	CMakeFiles/Lab_2.dir/main.cpp.obj	5ff9907ba3d47395
-2	189	7487483526821171	CMakeFiles/Lab_2.dir/AVL_tree.cpp.obj	5e738cec349cdefa
-189	284	7487483527741174	Lab_2.exe	74da51573b6904eb
+3	191	7488172610351194	CMakeFiles/Lab_2.dir/AVL_tree.cpp.obj	5e738cec349cdefa
+3	339	7497539813652819	CMakeFiles/AVLTreeExecutable.dir/main.cpp.obj	fe728da3299456f3
+0	268	7488172611111188	CMakeFiles/Lab_2.dir/main.cpp.obj	5ff9907ba3d47395
+0	138	7488175569572038	CMakeFiles/AVLTreeExecutable.dir/AVL_tree.cpp.obj	8ed717d2376283ce
+339	433	7497539814452818	AVLTreeExecutable.exe	bdc03d02a4a4b267
+1	640	7497541647026117	CMakeFiles/AVLTreeExecutable.dir/main.cpp.obj	6ce76cdf933899da
+640	704	7497541647646115	AVLTreeExecutable.exe	bdc03d02a4a4b267

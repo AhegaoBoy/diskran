@@ -1,0 +1,3 @@
+A:/mai_stuff/DISCRAN/Lab_1/cmake-build-debug/CMakeFiles/Lab_1.dir
+A:/mai_stuff/DISCRAN/Lab_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+A:/mai_stuff/DISCRAN/Lab_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

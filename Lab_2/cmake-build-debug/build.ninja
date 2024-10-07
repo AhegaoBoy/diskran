@@ -41,43 +41,37 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = A$:/mai_stuff/DISCRAN/Lab_2/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target Lab_2
+# Object build statements for EXECUTABLE target AVLTreeExecutable
 
 
 #############################################
-# Order-only phony target for Lab_2
+# Order-only phony target for AVLTreeExecutable
 
-build cmake_object_order_depends_target_Lab_2: phony || CMakeFiles/Lab_2.dir
+build cmake_object_order_depends_target_AVLTreeExecutable: phony || CMakeFiles/AVLTreeExecutable.dir
 
-build CMakeFiles/Lab_2.dir/main.cpp.obj: CXX_COMPILER__Lab_2_unscanned_Debug A$:/mai_stuff/DISCRAN/Lab_2/main.cpp || cmake_object_order_depends_target_Lab_2
-  DEP_FILE = CMakeFiles\Lab_2.dir\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Lab_2.dir
-  OBJECT_FILE_DIR = CMakeFiles\Lab_2.dir
-
-build CMakeFiles/Lab_2.dir/AVL_tree.cpp.obj: CXX_COMPILER__Lab_2_unscanned_Debug A$:/mai_stuff/DISCRAN/Lab_2/AVL_tree.cpp || cmake_object_order_depends_target_Lab_2
-  DEP_FILE = CMakeFiles\Lab_2.dir\AVL_tree.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Lab_2.dir
-  OBJECT_FILE_DIR = CMakeFiles\Lab_2.dir
+build CMakeFiles/AVLTreeExecutable.dir/main.cpp.obj: CXX_COMPILER__AVLTreeExecutable_unscanned_Debug A$:/mai_stuff/DISCRAN/Lab_2/main.cpp || cmake_object_order_depends_target_AVLTreeExecutable
+  DEP_FILE = CMakeFiles\AVLTreeExecutable.dir\main.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\AVLTreeExecutable.dir
+  OBJECT_FILE_DIR = CMakeFiles\AVLTreeExecutable.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target Lab_2
+# Link build statements for EXECUTABLE target AVLTreeExecutable
 
 
 #############################################
-# Link the executable Lab_2.exe
+# Link the executable AVLTreeExecutable.exe
 
-build Lab_2.exe: CXX_EXECUTABLE_LINKER__Lab_2_Debug CMakeFiles/Lab_2.dir/main.cpp.obj CMakeFiles/Lab_2.dir/AVL_tree.cpp.obj
+build AVLTreeExecutable.exe: CXX_EXECUTABLE_LINKER__AVLTreeExecutable_Debug CMakeFiles/AVLTreeExecutable.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\Lab_2.dir
+  OBJECT_DIR = CMakeFiles\AVLTreeExecutable.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = Lab_2.exe
-  TARGET_IMPLIB = libLab_2.dll.a
-  TARGET_PDB = Lab_2.exe.dbg
+  TARGET_FILE = AVLTreeExecutable.exe
+  TARGET_IMPLIB = libAVLTreeExecutable.dll.a
+  TARGET_PDB = AVLTreeExecutable.exe.dbg
 
 
 #############################################
@@ -105,7 +99,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build Lab_2: phony Lab_2.exe
+build AVLTreeExecutable: phony AVLTreeExecutable.exe
 
 # =============================================================================
 # Folder targets.
@@ -115,7 +109,7 @@ build Lab_2: phony Lab_2.exe
 #############################################
 # Folder: A:/mai_stuff/DISCRAN/Lab_2/cmake-build-debug
 
-build all: phony Lab_2.exe
+build all: phony AVLTreeExecutable.exe
 
 # =============================================================================
 # Built-in targets

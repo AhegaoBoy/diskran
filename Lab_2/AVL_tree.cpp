@@ -12,9 +12,10 @@ void AVL_tree<tkey, tvalue>::balance_class::balance(AVL_tree<tkey, tvalue>::node
 
         else
         {
-            if(cur_node_bf > 0)
+            if(cur_node_bf == 2)
             {
                 int64_t left_subtree_bf = balance_factor(current_node->_left);
+
                 if(left_subtree_bf > 0)
                 {
                     small_left_rotation(current_node);
@@ -96,6 +97,9 @@ void AVL_tree<tkey, tvalue>::balance_class::small_left_rotation(AVL_tree<tkey, t
     else
         parent_node->_right = tmp;
 
+    count_height(current_node);
+    count_height(tmp);
+
 }
 
 
@@ -113,6 +117,8 @@ void AVL_tree<tkey, tvalue>::balance_class::small_right_rotation(AVL_tree<tkey, 
         parent_node->_left = tmp;
     else
         parent_node->_right = tmp;
+    count_height(current_node);
+    count_height(tmp);
 }
 
 template<typename tkey, typename tvalue>
@@ -127,6 +133,9 @@ void AVL_tree<tkey, tvalue>::balance_class::big_left_rotation(AVL_tree<tkey, tva
     grand_child->right_subtree = child;
 
     child->left_subtree = grand_child_data;
+
+    count_height(current_node);
+    count_height(grand_child_data);
 
     small_left_rotation(current_node);
 }
@@ -143,6 +152,9 @@ void AVL_tree<tkey, tvalue>::balance_class::big_right_rotation(AVL_tree<tkey, tv
     grand_child->left_subtree = child;
 
     child->right_subtree = grand_child_data;
+
+    count_height(current_node);
+    count_height(grand_child_data);
 
     small_right_rotation(current_node);
 }
@@ -203,7 +215,7 @@ typename AVL_tree<tkey, tvalue>::dispose_class::dispose_status AVL_tree<tkey, tv
 {
 
     node* iter = _tree->root;
-    std::pair<typename AVL_tree<tkey, tvalue>::obtain_class::obtain_status, typename AVL_tree<tkey, tvalue>::node*&> result;
+//    std::pair<typename AVL_tree<tkey, tvalue>::obtain_class::obtain_status, typename AVL_tree<tkey, tvalue>::node*&> result;
     while(iter)
     {
         if(key < iter->_key)
@@ -224,14 +236,13 @@ typename AVL_tree<tkey, tvalue>::dispose_class::dispose_status AVL_tree<tkey, tv
 
 
         while(find_the_least->_right)
-        {
             find_the_least = find_the_least->_right;
-        }
-
-
 
     }
 
+    node* parent = iter->_parent;
+    parent->_right = iter->_right;
+    delete iter;
     balance_class::balance(iter);
 
 }

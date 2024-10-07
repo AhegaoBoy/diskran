@@ -2,6 +2,8 @@
 #define LAB_2_AVL_TREE_H
 
 #include<string>
+#include <cstdint>
+
 template<typename tkey, typename tvalue>
 class AVL_tree
 {
