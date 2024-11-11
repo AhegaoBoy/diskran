@@ -1,0 +1,55 @@
+The system is: Linux - 5.10.16.3-microsoft-standard-WSL2 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/3.23.0-rc2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/3.23.0-rc2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7913e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7913e.dir/build.make CMakeFiles/cmTC_7913e.dir/build
+gmake[1]: Entering directory '/mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7913e.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_7913e.dir/testCCompiler.c.o -c /mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_7913e
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7913e.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_7913e.dir/testCCompiler.c.o -o cmTC_7913e 
+gmake[1]: Leaving directory '/mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_80e02/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_80e02.dir/build.make CMakeFiles/cmTC_80e02.dir/build
+gmake[1]: Entering directory '/mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_80e02.dir/testCXXCompiler.cxx.o
+/usr/bin/c++    -o CMakeFiles/cmTC_80e02.dir/testCXXCompiler.cxx.o -c /mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_80e02
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_80e02.dir/link.txt --verbose=1
+/usr/bin/c++ CMakeFiles/cmTC_80e02.dir/testCXXCompiler.cxx.o -o cmTC_80e02 
+gmake[1]: Leaving directory '/mnt/a/mai_stuff/DISCRAN/Lab_4/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+

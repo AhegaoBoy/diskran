@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-class suffix_tree {
+class suffix_tree{
     class node {
         friend class suffix_tree;
         std::map<char, node*> children;
@@ -69,7 +69,6 @@ suffix_tree::~suffix_tree()
     delete_subtree(root);
 
 }
-
 void suffix_tree::delete_subtree(suffix_tree::node *subtree_root)
 {
     if(!subtree_root)
@@ -97,7 +96,7 @@ void suffix_tree::Ukkonen_algo(int txt_pos)
         if (active_length == 0)
             active_edge = txt_pos;
 
-        if (active_node->children.find(txt[active_edge]) == active_node->children.end()) {
+        if (!active_node->children[txt[active_edge]]) {
             active_node->children[txt[active_edge]] = create_node(txt_pos, &end_leaf_index);
 
             if (last_added_node) {
@@ -150,7 +149,6 @@ void suffix_tree::Ukkonen_algo(int txt_pos)
     }
 }
 
-
 std::string suffix_tree::do_work()
 {
     std::string result_string;
@@ -176,8 +174,6 @@ std::string suffix_tree::do_work()
     }
     return result_string;
 }
-
-
 
 int main()
 {

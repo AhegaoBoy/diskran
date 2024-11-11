@@ -9,8 +9,9 @@ int main()
 
 
 
-    while(std::cin>>operand_1>>operand_2)
+    while(!std::cin.eof())
     {
+        std::cin>>operand_1>>operand_2;
         char operation = 0;
 
         std::cin>>operation;

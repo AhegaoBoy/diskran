@@ -1,0 +1,17 @@
+# ninja log v5
+1	554	7502791031313047	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+556	676	7502791032499291	tmp_lab_5.exe	782b1a3bbb53fced
+2	376	7502796147851961	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+376	441	7502796148489819	tmp_lab_5.exe	782b1a3bbb53fced
+2	392	7502815038794990	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+393	467	7502815039522561	tmp_lab_5.exe	782b1a3bbb53fced
+2	544	7502816381665124	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+544	636	7502816382542186	tmp_lab_5.exe	782b1a3bbb53fced
+2	371	7502817816262860	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+371	439	7502817816920645	tmp_lab_5.exe	782b1a3bbb53fced
+2	460	7502820894313875	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+460	551	7502820895208820	tmp_lab_5.exe	782b1a3bbb53fced
+2	524	7502822761470682	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+524	602	7502822762248095	tmp_lab_5.exe	782b1a3bbb53fced
+2	430	7502822898117793	CMakeFiles/tmp_lab_5.dir/main.cpp.obj	b3c20ac268d3f7ac
+430	522	7502822899014794	tmp_lab_5.exe	782b1a3bbb53fced
